@@ -247,16 +247,9 @@ h1 .title-number { color: var(--red); text-shadow: 4px 4px 0 #ffe275; }
 .location-card h2, .rsvp-card h2 { font-size: clamp(2.1rem, 5vw, 4rem); max-width:780px; margin:0 auto 8px; }
 .location-card span, .rsvp-card span { display:block; margin: 0 auto 22px; font-weight:850; color:#53627e; }
 .location-card .button {
-  display: flex;
-  position: relative;
-  width: fit-content;
   min-width: 190px;
   margin-inline: auto;
   padding-inline: 28px;
-}
-.location-card .button svg {
-  position: absolute;
-  left: 24px;
 }
 .location-card .button span {
   width: 100%;

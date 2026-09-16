@@ -168,7 +168,7 @@ function App() {
           <p>Ubicación</p>
           <h2>{invitation.locationText}</h2>
           <span>Pasaje Caribe, Soyapango</span>
-          <Button href={invitation.wazeUrl} icon={MapPin} target="_blank" rel="noopener">Abrir en Waze</Button>
+          <Button href={invitation.wazeUrl} target="_blank" rel="noopener">Abrir en Waze</Button>
         </div>
       </section>
 
