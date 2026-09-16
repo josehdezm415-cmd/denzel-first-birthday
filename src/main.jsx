@@ -209,8 +209,8 @@ function App() {
           <h2>¿Nos acompañas?</h2>
           <span>Confirma por WhatsApp al {invitation.rsvpPhoneDisplay}</span>
           <div className="rsvp-actions">
-            <Button href={rsvpYes} icon={MessageCircle} target="_blank" rel="noopener">Confirmar asistencia por WhatsApp</Button>
-            <Button href={rsvpNo} icon={MessageCircle} variant="light" target="_blank" rel="noopener">Confirmo que no podré asistir</Button>
+            <Button href={rsvpYes} icon={MessageCircle} target="_blank" rel="noopener">Confirmar asistencia</Button>
+            <Button href={rsvpNo} icon={MessageCircle} variant="light" target="_blank" rel="noopener">No podré asistir</Button>
           </div>
         </div>
       </section>
