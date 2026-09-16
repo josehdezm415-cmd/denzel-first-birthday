@@ -245,7 +245,8 @@ h1 .title-number { color: var(--red); text-shadow: 4px 4px 0 #ffe275; }
 .location-card > svg { color: var(--blue); width:48px; height:48px; }
 .location-card p, .rsvp-card p { margin:8px 0; color:#df4b42; font-weight:950; letter-spacing:.08em; text-transform:uppercase; }
 .location-card h2, .rsvp-card h2 { font-size: clamp(2.1rem, 5vw, 4rem); max-width:780px; margin:0 auto 8px; }
-.location-card span, .rsvp-card span { display:block; margin: 0 auto 22px; font-weight:850; color:#53627e; }
+.location-card > span, .rsvp-card > span { display:block; margin: 0 auto 22px; font-weight:850; color:#53627e; }
+.location-card .button span { margin: 0; }
 .location-card .button {
   min-width: 190px;
   height: 54px;
