@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { CalendarDays, Gift, Heart, MapPin, MessageCircle, PartyPopper, Share2, Sparkles, Star } from 'lucide-react';
+import { CalendarDays, Gift, Heart, MapPin, MessageCircle, PartyPopper, Sparkles, Star } from 'lucide-react';
 import './styles.css';
 
 const invitation = {
@@ -19,12 +19,6 @@ const invitation = {
   giftNote: 'Soy talla 3T. Regalo de sobre es bienvenido. Por favor, no juguetes.'
 };
 
-const siteUrl = 'https://josehdezm415-cmd.github.io/denzel-first-birthday/';
-
-function formatGoogleDate(iso) {
-  return new Date(iso).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}Z$/, 'Z');
-}
-
 function getCountdownParts(targetIso) {
   const diff = Math.max(0, new Date(targetIso).getTime() - Date.now());
   return {
@@ -34,10 +28,8 @@ function getCountdownParts(targetIso) {
   };
 }
 
-const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(invitation.fullTitle)}&dates=${formatGoogleDate(invitation.eventStartIso)}/${formatGoogleDate(invitation.eventEndIso)}&details=${encodeURIComponent(`Acompáñanos a celebrar el primer añito de ${invitation.childName}. RSVP: ${invitation.rsvpPhoneDisplay}. ${siteUrl}`)}&location=${encodeURIComponent(invitation.locationText)}`;
 const rsvpYes = `https://wa.me/${invitation.rsvpPhoneWa}?text=${encodeURIComponent(`Hola, sí confirmo mi asistencia al cumpleaños de ${invitation.childName}.`)}`;
 const rsvpNo = `https://wa.me/${invitation.rsvpPhoneWa}?text=${encodeURIComponent(`Hola, gracias por la invitación al cumpleaños de ${invitation.childName}. No podré asistir, pero les deseo muchas bendiciones.`)}`;
-const shareUrl = `https://wa.me/?text=${encodeURIComponent(`Te comparto la invitación al cumpleaños #1 de ${invitation.childName}: ${siteUrl}`)}`;
 
 function Countdown() {
   const [timeLeft, setTimeLeft] = useState(() => getCountdownParts(invitation.eventStartIso));
@@ -219,8 +211,6 @@ function App() {
           <div className="rsvp-actions">
             <Button href={rsvpYes} icon={MessageCircle} target="_blank" rel="noopener">Confirmar asistencia por WhatsApp</Button>
             <Button href={rsvpNo} icon={MessageCircle} variant="light" target="_blank" rel="noopener">Confirmo que no podré asistir</Button>
-            <Button href={calendarUrl} icon={CalendarDays} variant="outline" target="_blank" rel="noopener">Guardar fecha</Button>
-            <Button href={shareUrl} icon={Share2} variant="outline" target="_blank" rel="noopener">Compartir invitación</Button>
           </div>
         </div>
       </section>
