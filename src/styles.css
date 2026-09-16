@@ -56,7 +56,20 @@ body::before {
 }
 
 a { color: inherit; }
-main { position: relative; z-index: 1; }
+main { position: relative; z-index: 1; isolation: isolate; }
+main > section,
+main > .character-band,
+main > footer,
+.topbar,
+.hero-grid,
+.section-title,
+.cards,
+.photo-grid,
+.location-card,
+.rsvp-card {
+  position: relative;
+  z-index: 2;
+}
 
 .topbar {
   width: min(940px, calc(100% - 28px));
@@ -281,7 +294,7 @@ h1 .title-number { color: var(--red); text-shadow: 4px 4px 0 #ffe275; }
 .rsvp-card img { width: 134px; }
 .rsvp-actions { justify-content:center; }
 footer { text-align:center; padding: 38px 18px 54px; font-weight:950; color:#53627e; }
-.decor { position: fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0; }
+.decor { position: fixed; inset:0; pointer-events:none; overflow:hidden; z-index:1; }
 .float {
   position:absolute;
   top: var(--float-y);
