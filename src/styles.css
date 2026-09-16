@@ -268,14 +268,30 @@ h1 .title-number { color: var(--red); text-shadow: 4px 4px 0 #ffe275; }
 .rsvp-actions { justify-content:center; }
 footer { text-align:center; padding: 38px 18px 54px; font-weight:950; color:#53627e; }
 .decor { position: fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0; }
-.float { position:absolute; top:-40px; left: calc((var(--i) * 7vw) + 2vw); width: 16px; height: 16px; border-radius: 50%; opacity:.5; animation: fall calc(15s + var(--i) * .6s) linear infinite; animation-delay: calc(var(--i) * -1.1s); }
+.float {
+  position:absolute;
+  top: var(--float-y);
+  left: var(--float-x);
+  width: var(--float-size);
+  height: var(--float-size);
+  border-radius: 50%;
+  opacity:.46;
+  animation: fallScatter var(--float-duration) linear infinite;
+  animation-delay: var(--float-delay);
+  will-change: transform;
+}
 .f0 { background: var(--red); border-radius: 50%; }
-.f1 { background: var(--yellow); transform: rotate(45deg); border-radius: 5px; }
-.f2 { background: var(--blue); width: 22px; height: 12px; border-radius: 999px; }
+.f1 { background: var(--yellow); border-radius: 5px; }
+.f2 { background: var(--blue); width: calc(var(--float-size) * 1.4); height: calc(var(--float-size) * .75); border-radius: 999px; }
 .f3 { background: var(--green); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
 .f4 { background: var(--purple); border-radius: 50% 50% 4px 50%; }
 .f5 { background: #ff91c5; border-radius: 4px; }
-@keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+@keyframes fallScatter {
+  0% { transform: translate3d(0, -12vh, 0) rotate(0deg); }
+  28% { transform: translate3d(calc(var(--float-drift) * .65), 28vh, 0) rotate(120deg); }
+  58% { transform: translate3d(calc(var(--float-drift) * -0.35), 65vh, 0) rotate(250deg); }
+  100% { transform: translate3d(var(--float-drift), 118vh, 0) rotate(420deg); }
+}
 @keyframes slowSpin { to { transform: rotate(360deg); } }
 @keyframes bounce { 0%,100% { transform: translateY(0) rotate(2deg); } 50% { transform: translateY(-16px) rotate(-2deg); } }
 

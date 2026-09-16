@@ -59,10 +59,48 @@ function Button({ href, children, icon: Icon, variant = 'primary', ...props }) {
   return <a className={`button ${variant}`} href={href} {...props}>{Icon ? <Icon size={18} /> : null}<span>{children}</span></a>;
 }
 
+const floatingPieces = [
+  { x: 4, y: -18, s: 13, d: 22, delay: -2, drift: 42, kind: 0 },
+  { x: 11, y: -46, s: 8, d: 29, delay: -17, drift: -28, kind: 1 },
+  { x: 18, y: -10, s: 15, d: 25, delay: -8, drift: 56, kind: 2 },
+  { x: 27, y: -64, s: 10, d: 32, delay: -24, drift: -44, kind: 3 },
+  { x: 36, y: -26, s: 12, d: 27, delay: -13, drift: 36, kind: 4 },
+  { x: 48, y: -82, s: 7, d: 34, delay: -29, drift: -58, kind: 5 },
+  { x: 59, y: -14, s: 14, d: 24, delay: -6, drift: 46, kind: 1 },
+  { x: 71, y: -58, s: 9, d: 31, delay: -21, drift: -38, kind: 2 },
+  { x: 83, y: -30, s: 16, d: 26, delay: -11, drift: 50, kind: 0 },
+  { x: 94, y: -72, s: 8, d: 33, delay: -27, drift: -34, kind: 4 },
+  { x: 7, y: -118, s: 9, d: 36, delay: -31, drift: 62, kind: 5 },
+  { x: 23, y: -96, s: 13, d: 28, delay: -19, drift: -52, kind: 0 },
+  { x: 32, y: -132, s: 7, d: 38, delay: -34, drift: 40, kind: 3 },
+  { x: 43, y: -110, s: 15, d: 30, delay: -25, drift: -46, kind: 2 },
+  { x: 55, y: -146, s: 10, d: 35, delay: -37, drift: 60, kind: 1 },
+  { x: 66, y: -102, s: 12, d: 29, delay: -23, drift: -32, kind: 5 },
+  { x: 77, y: -138, s: 8, d: 37, delay: -36, drift: 48, kind: 3 },
+  { x: 88, y: -92, s: 14, d: 27, delay: -18, drift: -56, kind: 4 },
+  { x: 15, y: -170, s: 11, d: 40, delay: -39, drift: 35, kind: 2 },
+  { x: 51, y: -184, s: 8, d: 42, delay: -41, drift: -42, kind: 0 },
+  { x: 91, y: -166, s: 10, d: 39, delay: -33, drift: 52, kind: 1 },
+  { x: 62, y: -208, s: 13, d: 44, delay: -43, drift: -50, kind: 4 }
+];
+
 function FloatingDecor() {
   return (
     <div className="decor" aria-hidden="true">
-      {Array.from({ length: 18 }).map((_, i) => <span key={i} className={`float f${i % 6}`} style={{ '--i': i }} />)}
+      {floatingPieces.map((piece, i) => (
+        <span
+          key={i}
+          className={`float f${piece.kind}`}
+          style={{
+            '--float-x': `${piece.x}vw`,
+            '--float-y': `${piece.y}px`,
+            '--float-size': `${piece.s}px`,
+            '--float-duration': `${piece.d}s`,
+            '--float-delay': `${piece.delay}s`,
+            '--float-drift': `${piece.drift}px`
+          }}
+        />
+      ))}
     </div>
   );
 }
