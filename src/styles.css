@@ -246,7 +246,22 @@ h1 .title-number { color: var(--red); text-shadow: 4px 4px 0 #ffe275; }
 .location-card p, .rsvp-card p { margin:8px 0; color:#df4b42; font-weight:950; letter-spacing:.08em; text-transform:uppercase; }
 .location-card h2, .rsvp-card h2 { font-size: clamp(2.1rem, 5vw, 4rem); max-width:780px; margin:0 auto 8px; }
 .location-card span, .rsvp-card span { display:block; margin: 0 auto 22px; font-weight:850; color:#53627e; }
-.location-card .button { margin-inline: auto; min-width: 174px; }
+.location-card .button {
+  display: flex;
+  position: relative;
+  width: fit-content;
+  min-width: 190px;
+  margin-inline: auto;
+  padding-inline: 28px;
+}
+.location-card .button svg {
+  position: absolute;
+  left: 24px;
+}
+.location-card .button span {
+  width: 100%;
+  text-align: center;
+}
 .rsvp-card { background: linear-gradient(135deg, rgba(255,255,255,.86), rgba(223,247,255,.9)); }
 .rsvp-card img { width: 134px; }
 .rsvp-actions { justify-content:center; }
