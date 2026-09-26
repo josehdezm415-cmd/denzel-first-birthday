@@ -128,9 +128,8 @@ function App() {
 
           <div className="hero-art">
             <div className="sunburst" />
-            <div className="photo-card placeholder-photo">
-              <span>Foto de Denzel aquí</span>
-              <small>envíame la foto principal y la coloco</small>
+            <div className="photo-card hero-photo-card">
+              <img src="./assets/denzel-hero-firetruck.jpg" alt="Denzel listo para su cumpleaños" />
             </div>
             <img className="plim-character" src="./assets/plim-character.png" alt="Plim Plim" />
           </div>
