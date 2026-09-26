@@ -215,7 +215,7 @@ function App() {
             <Button href={rsvpNo} icon={MessageCircle} variant="light" target="_blank" rel="noopener">No podré asistir</Button>
           </div>
         </div>
-        <img className="rsvp-sticker" src="./assets/plim-character.png" alt="Plim Plim" />
+        <img className="rsvp-sticker" src="./assets/plim-rsvp-waving.png" alt="Plim Plim saludando" />
       </section>
 
       <footer>Con cariño · Cumpleaños #1 de Denzel · {invitation.year}</footer>
