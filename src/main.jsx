@@ -169,12 +169,14 @@ function App() {
       </section>
 
       <section className="character-band">
-        <div>
+        <div className="character-copy">
           <p>Temática</p>
           <h2>Plim Plim y sus amigos</h2>
           <span>Colores, globos, estrellas y mucha alegría para celebrar el primer añito.</span>
         </div>
-        <img src="./assets/plim-products.jpg" alt="Plim Plim y sus amigos" />
+        <div className="character-scene-wrap">
+          <img className="character-scene" src="./assets/plim-hero.jpg" alt="Plim Plim y sus amigos" />
+        </div>
       </section>
 
       <section id="fotos" className="section photos-section">
@@ -204,6 +206,7 @@ function App() {
 
       <section id="rsvp" className="section rsvp-section">
         <div className="rsvp-card">
+          <img className="rsvp-character" src="./assets/plim-character.png" alt="Plim Plim" />
           <img src="./assets/plim-logo.png" alt="Plim Plim" />
           <p>Te esperamos</p>
           <h2>¿Nos acompañas?</h2>
