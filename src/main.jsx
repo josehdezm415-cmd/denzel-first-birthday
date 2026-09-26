@@ -206,7 +206,6 @@ function App() {
 
       <section id="rsvp" className="section rsvp-section">
         <div className="rsvp-card">
-          <img className="rsvp-character" src="./assets/plim-character.png" alt="Plim Plim" />
           <img src="./assets/plim-logo.png" alt="Plim Plim" />
           <p>Te esperamos</p>
           <h2>¿Nos acompañas?</h2>
@@ -216,6 +215,7 @@ function App() {
             <Button href={rsvpNo} icon={MessageCircle} variant="light" target="_blank" rel="noopener">No podré asistir</Button>
           </div>
         </div>
+        <img className="rsvp-sticker" src="./assets/plim-character.png" alt="Plim Plim" />
       </section>
 
       <footer>Con cariño · Cumpleaños #1 de Denzel · {invitation.year}</footer>
