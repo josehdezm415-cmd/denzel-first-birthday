@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { CalendarDays, Gift, Heart, MapPin, MessageCircle, PartyPopper, Sparkles, Star } from 'lucide-react';
+import { CalendarDays, Gift, Heart, MapPin, MessageCircle, PartyPopper, Sparkles } from 'lucide-react';
 import './styles.css';
 
 const invitation = {
@@ -98,8 +98,27 @@ function FloatingDecor() {
 }
 
 function App() {
-  const photoPlaceholders = useMemo(() => [
-    'Foto de Denzel', 'Con la familia', 'Mi primer añito', 'Momentos especiales'
+  const galleryPhotos = useMemo(() => [
+    {
+      src: './assets/gallery/denzel-gallery-family-cake.jpg',
+      title: 'Con su familia',
+      caption: 'Un momento especial junto al pastel.'
+    },
+    {
+      src: './assets/gallery/denzel-gallery-family-sofa.jpg',
+      title: 'Momentos en familia',
+      caption: 'Rodeado de cariño y compañía.'
+    },
+    {
+      src: './assets/gallery/denzel-gallery-smile.jpg',
+      title: 'Su sonrisa',
+      caption: 'Alegría pura para celebrar su primer añito.'
+    },
+    {
+      src: './assets/gallery/denzel-gallery-peluche.jpg',
+      title: 'Con su peluche',
+      caption: 'Un recuerdo tierno de Denzel.'
+    }
   ], []);
 
   return (
@@ -181,12 +200,14 @@ function App() {
           <h2>Momentos de Denzel</h2>
         </div>
         <div className="photo-grid">
-          {photoPlaceholders.map((label, index) => (
-            <div className="photo-slot" key={label}>
-              <Star />
-              <strong>{label}</strong>
-              <span>Placeholder {index + 1}</span>
-            </div>
+          {galleryPhotos.map((photo) => (
+            <article className="gallery-card" key={photo.src}>
+              <img src={photo.src} alt={photo.title} />
+              <div className="gallery-caption">
+                <strong>{photo.title}</strong>
+                <span>{photo.caption}</span>
+              </div>
+            </article>
           ))}
         </div>
       </section>
