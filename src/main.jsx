@@ -99,26 +99,10 @@ function FloatingDecor() {
 
 function App() {
   const galleryPhotos = useMemo(() => [
-    {
-      src: './assets/gallery/denzel-gallery-family-cake.jpg',
-      title: 'Con su familia',
-      caption: 'Un momento especial junto al pastel.'
-    },
-    {
-      src: './assets/gallery/denzel-gallery-family-sofa.jpg',
-      title: 'Momentos en familia',
-      caption: 'Rodeado de cariño y compañía.'
-    },
-    {
-      src: './assets/gallery/denzel-gallery-smile.jpg',
-      title: 'Su sonrisa',
-      caption: 'Alegría pura para celebrar su primer añito.'
-    },
-    {
-      src: './assets/gallery/denzel-gallery-peluche.jpg',
-      title: 'Con su peluche',
-      caption: 'Un recuerdo tierno de Denzel.'
-    }
+    './assets/gallery/denzel-gallery-family-cake.jpg',
+    './assets/gallery/denzel-gallery-family-sofa.jpg',
+    './assets/gallery/denzel-gallery-smile.jpg',
+    './assets/gallery/denzel-gallery-peluche.jpg'
   ], []);
 
   return (
@@ -200,13 +184,9 @@ function App() {
           <h2>Momentos de Denzel</h2>
         </div>
         <div className="photo-grid">
-          {galleryPhotos.map((photo) => (
-            <article className="gallery-card" key={photo.src}>
-              <img src={photo.src} alt={photo.title} />
-              <div className="gallery-caption">
-                <strong>{photo.title}</strong>
-                <span>{photo.caption}</span>
-              </div>
+          {galleryPhotos.map((photoSrc, index) => (
+            <article className="gallery-card" key={photoSrc}>
+              <img src={photoSrc} alt={`Foto ${index + 1} de Denzel`} />
             </article>
           ))}
         </div>

@@ -283,33 +283,6 @@ h1 .title-number { color: var(--red); text-shadow: 4px 4px 0 #ffe275; }
   display: block;
   object-fit: cover;
 }
-.gallery-caption {
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 12px;
-  padding: 12px 14px;
-  border-radius: 20px;
-  background: rgba(255,255,255,.88);
-  border: 1px solid rgba(255,255,255,.9);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 24px rgba(38,51,93,.12);
-}
-.gallery-caption strong {
-  display: block;
-  font-family: 'Baloo 2';
-  font-size: 1.18rem;
-  line-height: 1;
-  color: #26335d;
-}
-.gallery-caption span {
-  display: block;
-  margin-top: 4px;
-  color: #53627e;
-  font-weight: 850;
-  font-size: .86rem;
-  line-height: 1.18;
-}
 .photo-slot {
   min-height: 240px;
   border: 3px dashed rgba(38,51,93,.18);
