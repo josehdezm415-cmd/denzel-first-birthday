@@ -100,7 +100,7 @@ function FloatingDecor() {
 function App() {
   const galleryPhotos = useMemo(() => [
     './assets/gallery/denzel-gallery-family-cake.jpg',
-    './assets/gallery/denzel-gallery-family-sofa.jpg',
+    './assets/gallery/denzel-gallery-bakery.jpg',
     './assets/gallery/denzel-gallery-smile.jpg',
     './assets/gallery/denzel-gallery-peluche.jpg'
   ], []);
