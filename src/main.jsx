@@ -123,6 +123,7 @@ function App() {
             <h1><span className="title-word">Cumpleaños</span><span className="title-line"><span className="title-number">#1</span> de Denzel</span></h1>
             <p className="intro">Con mucha alegría queremos invitarte a celebrar el primer añito de nuestro querido Denzel.</p>
             <p className="subintro">Acompáñanos a vivir una tarde llena de alegría, colores y mucha diversión al estilo Plim Plim.</p>
+            <img className="intro-party-art" src="./assets/plim-birthday-cake-friends.png" alt="Plim Plim y sus amigos con pastel de cumpleaños" />
             <div className="hero-actions">
               <Button href="#rsvp" icon={MessageCircle}>Confirmar asistencia</Button>
               <Button href={invitation.wazeUrl} icon={MapPin} variant="secondary" target="_blank" rel="noopener">Abrir en Waze</Button>
