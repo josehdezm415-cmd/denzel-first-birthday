@@ -133,7 +133,7 @@ function App() {
           <div className="hero-art">
             <div className="sunburst" />
             <div className="photo-card hero-photo-card">
-              <img src="./assets/denzel-hero-firetruck.jpg" alt="Denzel listo para su cumpleaños" />
+              <img src="./assets/denzel-hero-teddy.jpg" alt="Denzel con su osito listo para su cumpleaños" />
             </div>
             <img className="plim-character" src="./assets/plim-character.png" alt="Plim Plim" />
           </div>
