@@ -379,6 +379,32 @@ h1 .title-number { color: var(--red); text-shadow: 4px 4px 0 #ffe275; }
 }
 .rsvp-actions { justify-content:center; }
 footer { text-align:center; padding: 38px 18px 54px; font-weight:950; color:#53627e; }
+.music-control {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 30;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid rgba(255, 255, 255, .92);
+  border-radius: 999px;
+  color: #53627e;
+  background: rgba(255, 255, 255, .72);
+  box-shadow: 0 9px 24px rgba(38, 51, 93, .14);
+  backdrop-filter: blur(14px) saturate(1.15);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
+  cursor: pointer;
+  transition: width .2s ease, transform .18s ease, background .18s ease;
+}
+.music-control:hover { transform: translateY(-2px); background: rgba(255, 255, 255, .9); }
+.music-control.needs-tap { width: 92px; padding: 0 14px; color: #31517d; }
+.music-control span { font-family: 'Nunito', system-ui, sans-serif; font-size: .78rem; font-weight: 900; }
+.music-control svg { flex: 0 0 auto; }
 .decor { position: fixed; inset:0; pointer-events:none; overflow:hidden; z-index:1; }
 .float {
   position:absolute;

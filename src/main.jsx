@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { CalendarDays, Gift, Heart, MapPin, MessageCircle, PartyPopper, Sparkles } from 'lucide-react';
+import { CalendarDays, Gift, Heart, MapPin, MessageCircle, PartyPopper, Sparkles, Volume2, VolumeX } from 'lucide-react';
 import './styles.css';
 
 const invitation = {
@@ -97,6 +97,92 @@ function FloatingDecor() {
   );
 }
 
+function MusicControl() {
+  const audioRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [needsTap, setNeedsTap] = useState(false);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return undefined;
+
+    audio.volume = 0.32;
+    const startMusic = async () => {
+      try {
+        await audio.play();
+        setIsPlaying(true);
+        setNeedsTap(false);
+      } catch {
+        setNeedsTap(true);
+      }
+    };
+
+    startMusic();
+
+    // Mobile browsers commonly block unmuted autoplay. In that case,
+    // start on the guest's first interaction anywhere on the invitation.
+    const unlockMusic = (event) => {
+      if (event.target.closest?.('.music-control')) return;
+      if (audio.paused) startMusic();
+    };
+    window.addEventListener('pointerdown', unlockMusic, { once: true, capture: true });
+    window.addEventListener('keydown', unlockMusic, { once: true, capture: true });
+
+    return () => {
+      window.removeEventListener('pointerdown', unlockMusic, { capture: true });
+      window.removeEventListener('keydown', unlockMusic, { capture: true });
+    };
+  }, []);
+
+  const toggleMusic = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (audio.paused) {
+      audio.muted = false;
+      setIsMuted(false);
+      try {
+        await audio.play();
+        setIsPlaying(true);
+        setNeedsTap(false);
+      } catch {
+        setNeedsTap(true);
+      }
+      return;
+    }
+
+    audio.muted = !audio.muted;
+    setIsMuted(audio.muted);
+  };
+
+  const mutedOrStopped = isMuted || !isPlaying;
+  return (
+    <>
+      <audio
+        ref={audioRef}
+        src="./audio/denzel-birthday-song.mp3"
+        autoPlay
+        loop
+        playsInline
+        preload="auto"
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+      />
+      <button
+        type="button"
+        className={`music-control${needsTap ? ' needs-tap' : ''}`}
+        onClick={toggleMusic}
+        aria-label={mutedOrStopped ? 'Reproducir música' : 'Silenciar música'}
+        title={mutedOrStopped ? 'Reproducir música' : 'Silenciar música'}
+      >
+        {mutedOrStopped ? <VolumeX size={18} /> : <Volume2 size={18} />}
+        {needsTap ? <span>Música</span> : null}
+      </button>
+    </>
+  );
+}
+
 function App() {
   const galleryPhotos = useMemo(() => [
     './assets/gallery/denzel-gallery-family-cake.jpg',
@@ -108,6 +194,7 @@ function App() {
   return (
     <main>
       <FloatingDecor />
+      <MusicControl />
       <section className="hero">
         <nav className="topbar">
           <a href="#detalles">Detalles</a>
