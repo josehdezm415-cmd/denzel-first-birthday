@@ -120,6 +120,27 @@ function MusicControl() {
 
     startMusic();
 
+    // Pause whenever the invitation is hidden or sent to the background,
+    // then resume only if it had been playing before it was hidden.
+    let wasPlayingBeforeHide = false;
+    const pauseForBackground = () => {
+      if (!audio.paused) wasPlayingBeforeHide = true;
+      audio.pause();
+    };
+    const resumeFromBackground = () => {
+      if (!wasPlayingBeforeHide) return;
+      wasPlayingBeforeHide = false;
+      startMusic();
+    };
+    const handleVisibilityChange = () => {
+      if (document.hidden) pauseForBackground();
+      else resumeFromBackground();
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('pagehide', pauseForBackground);
+    window.addEventListener('pageshow', resumeFromBackground);
+
     // Mobile browsers commonly block unmuted autoplay. In that case,
     // start on the guest's first interaction anywhere on the invitation.
     const unlockMusic = (event) => {
@@ -130,6 +151,9 @@ function MusicControl() {
     window.addEventListener('keydown', unlockMusic, { once: true, capture: true });
 
     return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('pagehide', pauseForBackground);
+      window.removeEventListener('pageshow', resumeFromBackground);
       window.removeEventListener('pointerdown', unlockMusic, { capture: true });
       window.removeEventListener('keydown', unlockMusic, { capture: true });
     };
